@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Dice Test</title>
+  <script src="../js/app/dice.js"></script>
+  <script>
+    function init(){
+      var debug = document.getElementById("debug")
+      var out = "<ul>"
+
+      var d1 = new Dice()
+      out += "<li>new Dice() gives me " + d1.sides + " sides</li>"
+
+      var d2 = new Dice(10)
+      out += "<li>new Dice(10) gives me " + d2.sides + " sides</li>"
+
+      out += "</ul>"
+      debug.innerHTML = out
+    }
+
+    window.onload = init
+  </script>
+
+</head>
+<body>
+  <h1>Dice Test</h1>
+  <div id="debug">Debug messages here.</div>
+</body>
+</html>
