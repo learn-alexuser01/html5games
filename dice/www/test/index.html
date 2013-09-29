@@ -7,11 +7,20 @@
       var debug = document.getElementById("debug")
       var out = "<ul>"
 
+      // create a regular dice
       var d1 = new Dice()
       out += "<li>new Dice() gives me " + d1.sides + " sides</li>"
 
+      // create a 10-sided dice
       var d2 = new Dice(10)
       out += "<li>new Dice(10) gives me " + d2.sides + " sides</li>"
+
+      // roll a 6-sided dice
+      var rolls = []
+      for(var i=0; i<10; i++){
+        rolls[i] = d1.roll()
+      }
+      out += "<li>I rolled a 6-sided dice 10 times: " + rolls + "</li>"
 
       out += "</ul>"
       debug.innerHTML = out
