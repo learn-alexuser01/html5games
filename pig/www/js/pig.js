@@ -5,6 +5,11 @@ function Pig(name){
 }
 
 Pig.prototype.swapPlayers = function(){
+  // add a new line for dice
+  // so each turn has it's own line
+  var diceDiv = document.getElementById(this.currentPlayer.name + "_dice")
+  diceDiv.insertAdjacentHTML("beforeEnd", "<br>")
+
   // disable all buttons
   var buttons = ["p1_rollButton", 
                  "p1_holdButton", 
@@ -16,6 +21,13 @@ Pig.prototype.swapPlayers = function(){
     button.setAttribute("disabled")
   }                 
 
+  // remove background color
+  var divs = ["p1", "p2"]
+  for(var i=0; i<divs.length; i++){
+    var div = document.getElementById(divs[i])
+    div.className = div.className.replace("currentPlayer", "")
+  }
+
   // set currentPlayer
   if(this.currentPlayer === this.p1){
     this.currentPlayer = this.p2
@@ -23,9 +35,15 @@ Pig.prototype.swapPlayers = function(){
     this.currentPlayer = this.p1
   }
 
+  // add background color
+  var currentPlayer = document.getElementById(this.currentPlayer.name) 
+  currentPlayer.className = currentPlayer.className + " currentPlayer"
+
   // enable roll button
   var rollButton = document.getElementById(this.currentPlayer.name + "_rollButton") 
   rollButton.removeAttribute("disabled") 
+
+
 
   return this.currentPlayer
 }
