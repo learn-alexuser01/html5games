@@ -48,14 +48,15 @@ Pig.prototype.swapPlayers = function(){
 }
 
 Pig.prototype.roll = function(){
-  // update bucket
   var result = this.currentPlayer.roll()
-  var bucketDiv = document.getElementById(this.currentPlayer.name + "_bucket")
-  bucketDiv.innerHTML = this.currentPlayer.bucket
 
   // show dice roll
   var diceDiv = document.getElementById(this.currentPlayer.name + "_dice")
   diceDiv.insertAdjacentHTML("beforeEnd", this.currentPlayer.dice.display())
+  
+  // update bucket
+  var bucketDiv = document.getElementById(this.currentPlayer.name + "_bucket")
+  bucketDiv.innerHTML = this.currentPlayer.bucket
 
   // swap players (if necessary)
   if(result === 1){    
