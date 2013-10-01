@@ -21,3 +21,7 @@
 .currentPlayer{
   background-color: green;
 }
+
+.winner{
+  border: 5px solid red;
+}
