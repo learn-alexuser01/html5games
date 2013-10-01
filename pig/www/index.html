@@ -1,9 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script data-main="js/app" src="js/lib/require.js"></script>
-    </head>
-    <body>
-        <h1>Hello World</h1>
-    </body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <script src="js/dice.js"></script>
+    <script src="js/player.js"></script>
+    <script>
+        var Pig = {}
+        Pig.p1 = new Player("p1")
+        Pig.p2 = new Player("p2")
+    </script>
+  </head>
+  <body>
+    <h1>Pig</h1>
+
+    <div id="rules">
+      <h2>Rules</h2>
+      <p>
+        Each player rolls the dice until they get a 1 or decide to hold, which adds the points in the bucket to their score. The first player to 100 wins.
+      </p>
+      
+
+      <ul>
+        <li>If the player rolls a 1, they score nothing and pass the dice to the other player.</li>
+        <li>If the player rolls anything besides a 1, the points go into <b>the bucket</b>.</li>
+        <li>At that point, the player can <b>hold</b>, which adds the points in <b>the bucket</b> to their score, or roll again.</li>
+        <li>The bucket gets bigger with each roll, but if the player rolls a 1, they lose everything in the bucket and pass the dice.</li>
+      </ul>
+    </div>
+
+    <div id="left">
+      <h2>Player 1</h2>
+      <p>Score: <span id="p1_score">0</span></p>
+      <p>Bucket: <span id="p1_bucket">0</span></p>
+      <p>
+        <button id="p1_rollButton" onclick="Pig.p1.roll()">Roll</button>
+        <button id="p1_holdButton" onclick="Pig.p1.hold()" disabled>Hold</button>
+      </p>
+      <div id="p1_dice"></div>
+
+    </div>
+
+    <div id="right">
+      <h2>Player 2</h2>
+      <p>Score: <span id="p2_score">0</span></p>
+      <p>Bucket: <span id="p2_bucket">0</span></p>
+      <p>
+        <button id="p2_rollButton" onclick="Pig.p2.roll()" disabled>Roll</button>
+        <button id="p2_holdButton" onclick="Pig.p2.hold()" disabled>Hold</button>
+      </p>
+      <div id="p2_dice"></div>
+    </div>
+
+
+  </body>
 </html>

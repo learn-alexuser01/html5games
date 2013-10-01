@@ -1,0 +1,22 @@
+#left{
+  float: left;
+  width: 45%;
+  background-color: yellow;
+  padding: 1em;
+}
+#right{
+  float: left;
+  width: 45%;
+  background-color: green;
+  padding: 1em;
+}
+
+#p1_dice{
+  font-size: 4em;
+  width: 5em;
+}
+
+#p2_dice{
+  font-size: 4em;
+  max-width: 100%;
+}
