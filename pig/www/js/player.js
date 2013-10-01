@@ -1,35 +1,24 @@
 function Player(name){
   this.name = name
+  this.dice = new Dice()
+  this.score = 0
+  this.bucket = 0
 }
 
 Player.prototype.roll = function(){
-  var bucketDiv = document.getElementById(this.name + "_bucket")
-  var total = new Number(bucketDiv.innerHTML)
-  var dice = new Dice()
-  var result = dice.roll()
-
-  // show dice roll
-  var diceDiv = document.getElementById(this.name + "_dice")
-  diceDiv.insertAdjacentHTML("beforeEnd", dice.display())
-
-  // get buttons
-  var rollButton = document.getElementById(this.name + "_rollButton")
-  var holdButton = document.getElementById(this.name + "_holdButton")
-
+  var result = this.dice.roll()
+  
   // update bucket
   if(result === 1){
-    total = 0
-    rollButton.setAttribute("disabled")
-    holdButton.setAttribute("disabled")
+    this.bucket = 0
   }else{
-    total += result
-    holdButton.removeAttribute("disabled")
+    this.bucket += result
   }
-  
-  bucketDiv.innerHTML = total
-  return total
+  return result
 }
 
 Player.prototype.hold = function(){
-
+  this.score += this.bucket
+  this.bucket = 0
+  return this.score
 }
