@@ -12,15 +12,7 @@ Pig.prototype.swapPlayers = function(){
   diceDiv.insertAdjacentHTML("beforeEnd", "<br>")
 
   // disable all buttons
-  var buttons = ["p1_rollButton", 
-                 "p1_holdButton", 
-                 "p2_rollButton", 
-                 "p2_holdButton"]
-
-  for(var i=0; i<buttons.length; i++){
-    var button = document.getElementById(buttons[i])
-    button.setAttribute("disabled")
-  }                 
+  this.disableAllButtons()
 
   // remove background color
   var divs = ["p1", "p2"]
@@ -96,18 +88,22 @@ Pig.prototype.checkForWinner = function(){
     h2.insertAdjacentHTML("beforeEnd", " -- WINNER!!!")
 
     // disable all buttons
-    var buttons = ["p1_rollButton", 
-                   "p1_holdButton", 
-                   "p2_rollButton", 
-                   "p2_holdButton"]
-
-    for(var i=0; i<buttons.length; i++){
-      var button = document.getElementById(buttons[i])
-      button.setAttribute("disabled")
-    }               
+    this.disableAllButtons()
 
     result = true  
   }
 
   return result
+}
+
+Pig.prototype.disableAllButtons = function(){
+  var buttons = ["p1_rollButton", 
+                 "p1_holdButton", 
+                 "p2_rollButton", 
+                 "p2_holdButton"]
+
+  for(var i=0; i<buttons.length; i++){
+    var button = document.getElementById(buttons[i])
+    button.setAttribute("disabled")
+  }                 
 }
